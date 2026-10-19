@@ -1,0 +1,26 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Naming",
+      "description": "Skills para el proceso de investigación, divergencia, filtrado y pitch de nombres.",
+      "skills": [
+        "naming-brief",
+        "naming-clearing",
+        "naming-divergence",
+        "naming-filter",
+        "naming-pitch",
+        "naming-research-fondo",
+        "naming-research-forma"
+      ]
+    },
+    {
+      "title": "Redacción",
+      "description": "Skills de narrativa y generación de texto sin marcas estructurales de IA.",
+      "skills": [
+        "escribe-humano"
+      ]
+    }
+  ]
+}
