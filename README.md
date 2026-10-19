@@ -1,35 +1,65 @@
-# Skills Repository
+# Skills para Agentes y LLMs
 
-Repositorio centralizado de skills y frameworks metodológicos para asistentes y agentes de inteligencia artificial (OpenCode, Claude Code, etc.), optimizados bajo arquitectura **LLM-first** con compuertas de decisión medibles (*Decision Gates*).
+Instrucciones de ejecución directa, compuertas de control (*decision gates*) y documentación de soporte para asistentes y agentes de código (OpenCode, Claude Code, Pi, Codex).
 
-## 📂 Contenido del Repositorio
-
-El catálogo de skills se encuentra dentro del directorio [`skills/`](./skills/):
-
-### ✍️ Redacción & Estilo
-* **[`escribe-humano`](./skills/escribe-humano/)**: Aplica reglas estructurales anti-IA de StoryScope para eliminar el aroma corporativo genérico y producir redacción directa, humana y anclada en hechos concretos.
-
-### 🏷️ Framework de Ingeniería de Naming Estratégico
-Pipeline metodológico modular de 6 fases para generación, evaluación, blindaje registral y pitch de marcas comerciales:
-* **[`naming-research-fondo`](./skills/naming-research-fondo/)** (Fase 0 - Fondo): Investigación estratégica de visión a 5 años, arquetipo y propuesta de valor Ohmae.
-* **[`naming-research-forma`](./skills/naming-research-forma/)** (Fase 0 - Forma): Minería léxica profunda (etimologías grecolatinas, glosarios especializados, slang urbano).
-* **[`naming-brief`](./skills/naming-brief/)** (Fase 1): Formalización del brief maestro y compuerta binaria de validación estratégica.
-* **[`naming-divergence`](./skills/naming-divergence/)** (Fase 2): Divergencia cuantitativa estructurada a través de 6 motores de generación (~70 candidatos).
-* **[`naming-filter`](./skills/naming-filter/)** (Fase 3): Prueba visual en aislamiento monocrómico A5 y destilación a shortlist balanceada (10-15 opciones).
-* **[`naming-clearing`](./skills/naming-clearing/)** (Fase 4): Clearing registral (Clases de Niza, Google pág. 1, bases de marcas y filtro lingüístico).
-* **[`naming-pitch`](./skills/naming-pitch/)** (Fase 5): Dossier ejecutivo de defensa y desmonte de objeciones subjetivas del cliente.
-
-> 📖 Consultá [`docs/NAMING_WORKFLOW.md`](./docs/NAMING_WORKFLOW.md) para ver el flujo completo y la matriz de compuertas del framework de naming.
+Sin prosa de relleno ni manuales de autoayuda para modelos de lenguaje: cada carpeta contiene archivos `SKILL.md` con reglas duras y criterios de salida que el agente debe cumplir antes de responder.
 
 ---
 
-## 🛠️ Estructura de Cada Skill
+## Skills Disponibles
 
-Cada skill cumple con el estándar de especificación:
+### Redacción y Estilo
+
+* [**`escribe-humano`**](skills/escribe-humano/): Contrato de runtime basado en la taxonomía empírica de StoryScope (arXiv:2604.03136). Erradica los vicios estructurales de los LLMs: moralejas al cierre, somatizaciones de manual (pechos oprimidos, nudos en la garganta), causalidad lineal estricta y adjetivación corporativa vacía.
+
+---
+
+### Framework de Naming para Marcas
+
+Metodología de seis etapas consecutivas para crear nombres de producto o empresa, blindar su registro de marca y defenderlos frente a objeciones de clientes.
+
+| Fase | Skill | Objetivo de Ejecución |
+| :--- | :--- | :--- |
+| **0. Fondo** | [**`naming-research-fondo`**](skills/naming-research-fondo/) | Extrae la visión del negocio a 5 años, el arquetipo de cliente y la propuesta de valor según el modelo de Kenichi Ohmae. |
+| **0. Forma** | [**`naming-research-forma`**](skills/naming-research-forma/) | Rastrea raíces grecolatinas, jerga técnica sectorial y expresiones urbanas vivas. |
+| **1. Brief** | [**`naming-brief`**](skills/naming-brief/) | Sintetiza fondo y forma en un documento base y exige confirmación explícita del usuario antes de crear nombres. |
+| **2. Divergencia** | [**`naming-divergence`**](skills/naming-divergence/) | Genera una lista larga de 70 candidatos a través de seis motores morfológicos y semánticos, sin filtro inicial. |
+| **3. Filtro** | [**`naming-filter`**](skills/naming-filter/) | Reduce la lista a un rango de 10 a 15 opciones evaluadas en aislamiento visual monocrómico sobre plantilla A5. |
+| **4. Clearing** | [**`naming-clearing`**](skills/naming-clearing/) | Comprueba clases en la Clasificación de Niza, resultados limpios en la página 1 de Google, dominios web y colisiones lingüísticas. |
+| **5. Pitch** | [**`naming-pitch`**](skills/naming-pitch/) | Arma el documento de presentación con argumentos de psicología cognitiva (simbolismo fonético, fluidez) y desactiva reparos del cliente usando la lista de 70 descartes como prueba de trabajo. |
+
+*El diagrama de flujo completo y los criterios de corte de cada etapa están detallados en [docs/NAMING_WORKFLOW.md](docs/NAMING_WORKFLOW.md).*
+
+---
+
+## Anatomía de una Skill
+
+Cada herramienta se aloja en su propio directorio dentro de `skills/`:
 
 ```text
-skills/{skill-name}/
-├── SKILL.md              # Contrato principal con frontmatter YAML, Hard Rules y Decision Gates
-├── assets/               # Plantillas, esquemas o ejemplos (opcional)
-└── references/           # Documentación de soporte y marcos teóricos locales (opcional)
+skills/{nombre-de-la-skill}/
+├── SKILL.md              # Contrato de runtime: YAML frontmatter, activación, reglas duras y salidas esperadas.
+├── assets/               # Plantillas, esquemas o ejemplos de apoyo para el agente (opcional).
+└── references/           # Archivos locales de consulta, papers o guías de referencia rápida (opcional).
+```
+
+---
+
+## Cómo Usarlas
+
+### En OpenCode
+Las skills dentro de este repositorio quedan listas para ser consumidas si clonás o vinculás el repositorio en tu espacio de trabajo:
+
+```bash
+git clone https://github.com/Totopo27/skills.git
+```
+
+### En Claude Code o Runtimes Globales
+Para disponer de estas instrucciones de forma global en tu máquina:
+
+```bash
+# Copia directa a la carpeta global de skills de tu agente
+cp -r skills/* ~/.agents/skills/
+# O en el caso específico de Claude Code:
+cp -r skills/* ~/.claude/skills/
 ```
