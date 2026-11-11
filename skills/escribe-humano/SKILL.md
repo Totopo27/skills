@@ -1,15 +1,15 @@
 ---
 name: escribe-humano
-description: "Trigger: escribe-humano, redacción humana, texto sin aroma a IA, narrativa humana. Aplica reglas estructurales anti-IA de StoryScope."
+description: "Trigger: escribe-humano, redacción humana, texto sin aroma a IA, narrativa humana. Preserva voz y elimina fórmulas y artefactos mecánicos."
 license: Apache-2.0
 metadata:
   author: "Gustavo"
-  version: "1.1"
+  version: "2.0"
 ---
 
 # Escribe Humano
 
-Contrato de runtime para generación y edición de texto humanizado sin marcas estructurales de IA.
+Contrato de runtime para redactar y editar prosa con voz específica, estructura contextual e higiene mecánica.
 
 ## Activation Contract
 
@@ -20,45 +20,42 @@ Cargar esta skill cuando:
 
 ## Hard Rules
 
-1. **Sin moralismo ni síntesis temática**: Prohibido que el narrador o el cierre expliquen la lección aprendida o moraleja. El sentido lo deduce el lector.
-2. **Sin debates filosóficos en diálogo**: Los personajes conversan desde necesidades, mezquindades o tareas inmediatas, no como ensayistas.
-3. **Sin somatización cliché**: Prohibido recurrir a atajos físicos para tensión o emoción (nudo en la garganta, pecho oprimido, sudor frío, tragar saliva, nudillos blancos). Usar acciones objetivas o nombrar la emoción directamente.
-4. **Entorno desacoplado del ánimo**: El clima y los espacios no deben ser espejos psicológicos del personaje (evitar falacia patética).
-5. **Ruptura de causalidad lineal**: Obligatorio incluir anacronías (elipsis, saltos temporales, comienzos in media res) y subtramas o cabos sueltos.
-6. **Desenlaces abiertos y ambivalencia moral**: Prohibido resolver conflictos mediante epifanías súbitas de perdón o aceptación perfecta. Mantener costo ético real.
-7. **Anclaje concreto e intertextual**: Usar nombres propios, lugares, marcas y entidades específicas en lugar de alusiones genéricas ("un viejo libro").
-8. **Erradicación de sesgos por modelo**:
-   - **Anti-Claude**: Evitar escalada plana y cierres flemáticos o reflexivos homogéneos.
-   - **Anti-GPT**: Prohibido usar chismes como detonante automático, marcos retrospectivos ("Años después...") y secuencias de sueños.
-   - **Anti-Gemini**: Prohibido iniciar personajes con descripciones físicas de catálogo; entrar directo en acción o diálogo.
-   - **Anti-DeepSeek**: Prohibido volcar toda la exposición contextual en el primer párrafo; dosificar la información.
+1. **Voz antes que detector**: Conserva intención, registro e irregularidades deliberadas. No insertes errores, anécdotas, cifras ni opiniones falsas para aparentar humanidad.
+2. **Concreción verificable**: Prefiere detalles relevantes y autorizados; no conviertas vaguedad en falsa precisión.
+3. **Léxico contextual**: Trata `references/spanish-lexicon.json` como señales de revisión. Sustituye automáticamente solo entradas marcadas `replace` y solo si el sentido se conserva.
+4. **Tipografía legítima**: No elimines rayas, comillas curvas, elipsis o viñetas por considerarlas huellas de IA. Corrige únicamente abuso, inconsistencia o petición explícita.
+5. **Código y destinos intactos**: Preserva URLs, código, citas textuales, nombres propios y terminología técnica durante la limpieza.
+6. **Afirmación honesta**: La limpieza reduce artefactos y fórmulas; nunca promete autoría humana, indetectabilidad ni un resultado en detectores externos.
+7. **Reglas por modo**: Aplica StoryScope solo a narrativa. No impongas anacronías, subtramas, diálogo o finales abiertos a ensayo, periodismo, documentación o copy.
 
 ## Decision Gates
 
-| Intención | Prohibido (Sesgo IA) | Obligatorio (Técnica Humana) |
+| Texto | Aplicar | Evitar |
 |---|---|---|
-| **Tristeza / Duelo** | Opresión en el pecho, lágrimas silenciosas, lluvia. | Acción mundana desconectada, diálogo áspero o nombrar la emoción directa. |
-| **Introducción** | Párrafo describiendo ropa, estatura y mirada. | Entrar in media res, en acción, error o reacción de terceros. |
-| **Misterio** | Resolución simétrica explicada punto por punto. | Revelar piezas parciales; admitir cabos sueltos e interpretación. |
-| **Conflicto moral** | Epifanía, comprensión mutua y redención limpia. | Transigencia, contradicción o costo ético sostenido. |
+| **Narrativa** | Cargar `references/storyscope.md`; usar conflicto, temporalidad y ambivalencia cuando sirvan a la obra. | Convertir rasgos estadísticos en obligaciones o fórmulas nuevas. |
+| **Ensayo / periodismo** | Tesis o foco claros, evidencia atribuible y transiciones motivadas. | Moraleja redundante, conectores automáticos y fuentes inventadas. |
+| **Documentación** | Precisión, secuencia verificable y terminología estable. | Anacronías, ambigüedad deliberada y variación que perjudique comprensión. |
+| **Copy / redes** | Audiencia, canal, voz y llamada a la acción autorizada. | Engagement bait, grandilocuencia y experiencias personales fabricadas. |
+| **Edición de borrador** | Cargar `references/mechanical-cleanup.md`; proteger contenido literal antes de limpiar. | Reescritura léxica indiscriminada. |
 
 ## Execution Steps
 
-1. **Fijar premisa**: Definir conflicto sin moraleja preestablecida y planificar anacronía o elipsis.
-2. **Redacción primaria**: Alternar diálogo vivo con acción, usando nombres propios concretos y evitando descripciones de inventario.
-3. **Auditoría de sesgos**:
-   - [ ] ¿Hay moraleja o reflexión trascendental al final? -> Eliminar.
-   - [ ] ¿Hay somatizaciones cliché (gargantas secas, pechos oprimidos)? -> Sustituir por acción o etiqueta directa.
-   - [ ] ¿La trama es lineal y monocanal? -> Añadir desvío mundano o subtrama.
-   - [ ] ¿El protagonista se redime limpiamente? -> Introducir ambivalencia moral.
-   - [ ] ¿Hay referencias genéricas? -> Sustituir por nombres y entidades concretas.
-4. **Entrega**: Emitir únicamente el texto final limpio.
+1. **Clasificar**: Determina el modo por propósito y formato; combina modos solo si el encargo realmente los mezcla.
+2. **Fijar la voz**: Usa las instrucciones y muestras disponibles. Carga `references/voice-profile.md` cuando haya autor, audiencia o restricciones factuales relevantes.
+3. **Redactar o editar**: Mantén significado, hechos y contenido literal. En narrativa, aplica StoryScope con criterio; en otros modos, sigue su compuerta específica.
+4. **Limpiar**: Para borradores, ejecuta primero la higiene mecánica sin reemplazos; activa el léxico seguro solo cuando el usuario pida transformación y revisa cada cambio.
+5. **Auditar**: Revisa voz, concreción, ritmo contextual, fórmulas, integridad factual y preservación de URLs/código. Reescribe señales estructurales con juicio, no por puntuación.
+6. **Entregar**: Devuelve el texto limpio; añade diagnóstico o informe solo si fue solicitado.
 
 ## Output Contract
 
 - Devolver el texto final aplicando rigurosamente las reglas sin metadiscurso ni justificaciones introductorias.
 - Incluir autoevaluación de sesgos mitigados únicamente si el usuario la solicita de forma explícita.
+- Si se solicita auditoría, separar hallazgos mecánicos, léxicos, estructurales y factuales; no presentar una puntuación como prueba de autoría.
 
 ## References
 
 - [StoryScope Evidence and Taxonomy](references/storyscope.md): Datos empíricos, métricas y taxonomía del estudio arXiv:2604.03136.
+- [Perfil de voz](references/voice-profile.md): Audiencia, registro, límites y evidencia autorizada.
+- [Limpieza mecánica](references/mechanical-cleanup.md): Uso y límites del limpiador conservador.
+- [Léxico español](references/spanish-lexicon.json): Señales contextuales y sustituciones seguras editables.

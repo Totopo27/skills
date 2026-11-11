@@ -1,0 +1,89 @@
+{
+  "language": "es",
+  "purpose": "Contextual review lexicon for formulaic Spanish prose",
+  "entries": [
+    {
+      "phrase": "en la actualidad",
+      "category": "temporal-filler",
+      "action": "replace",
+      "replacement": "hoy"
+    },
+    {
+      "phrase": "con el objetivo de",
+      "category": "inflated-purpose",
+      "action": "replace",
+      "replacement": "para"
+    },
+    {
+      "phrase": "con el fin de",
+      "category": "inflated-purpose",
+      "action": "replace",
+      "replacement": "para"
+    },
+    {
+      "phrase": "cabe destacar que",
+      "category": "metadiscourse",
+      "action": "review"
+    },
+    {
+      "phrase": "conviene destacar que",
+      "category": "metadiscourse",
+      "action": "review"
+    },
+    {
+      "phrase": "es importante señalar que",
+      "category": "metadiscourse",
+      "action": "review"
+    },
+    {
+      "phrase": "en este sentido",
+      "category": "mechanical-transition",
+      "action": "review"
+    },
+    {
+      "phrase": "por otro lado",
+      "category": "mechanical-transition",
+      "action": "review"
+    },
+    {
+      "phrase": "en conclusión",
+      "category": "formulaic-closing",
+      "action": "review"
+    },
+    {
+      "phrase": "en resumen",
+      "category": "formulaic-closing",
+      "action": "review"
+    },
+    {
+      "phrase": "sin lugar a dudas",
+      "category": "empty-intensifier",
+      "action": "review"
+    },
+    {
+      "phrase": "un claro ejemplo de",
+      "category": "metadiscourse",
+      "action": "review"
+    },
+    {
+      "phrase": "marca un antes y un después",
+      "category": "stock-metaphor",
+      "action": "review"
+    },
+    {
+      "phrase": "abre un abanico de posibilidades",
+      "category": "stock-metaphor",
+      "action": "review"
+    },
+    {
+      "phrase": "en un mundo cada vez más",
+      "category": "generic-opening",
+      "action": "review"
+    },
+    {
+      "phrase": "no se trata solo de",
+      "category": "formulaic-contrast",
+      "action": "review"
+    }
+  ]
+}
